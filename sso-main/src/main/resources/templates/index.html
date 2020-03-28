@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Model</title>
+</head>
+<body>
+<h1>欢迎来到首页</h1>
+<span>
+       <!--满足条件 session.loginUser == null 时执行-->
+      <a th:if="${session.loginUser == null}"
+         href="http://login.xiaoming.com:9000/view/login?target=http://www.xiaoming.com:9010/view/index">登录</a>
+      <!--不满足条件 session.loginUser == null 时执行-->
+      <a th:unless="${session.loginUser == null}" href="#">退出</a>
+      </span>
+<p th:unless="${session.loginUser == null}">
+    <span th:text="${session.loginUser.username}" style="color: lightskyblue"></span>已登录
+</p>
+</body>
+</html>
